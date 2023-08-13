@@ -1,0 +1,20 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+bool isMirror(struct TreeNode* Left, struct TreeNode* Right){
+    if (!Left && !Right)
+        return true;
+    if(!Left || !Right)
+        return false;
+    return (Left->val==Right->val) && isMirror(Left->left,Right->right) && isMirror(Left->right,Right->left);
+}
+bool isSymmetric(struct TreeNode* root){
+    if (!root)
+        return true;
+    return  isMirror(root->left, root->right);
+}
