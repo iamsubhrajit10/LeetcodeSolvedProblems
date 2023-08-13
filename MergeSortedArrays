@@ -1,0 +1,20 @@
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n){
+    int *result=(int *)malloc(nums1Size*sizeof(int));
+    int first=0,second=0,i=0;
+    while(first<m && second<n){
+        if (nums1[first]<nums2[second]){
+            result[i++]=nums1[first++];
+        }else{
+            result[i++]=nums2[second++];
+        }
+    }
+    while(first<m){
+        result[i++]=nums1[first++];
+    }
+    while(second<n){
+        result[i++]=nums2[second++];
+    }
+    for(int i=0;i<nums1Size;i++){
+        nums1[i]=result[i];
+    }
+}
